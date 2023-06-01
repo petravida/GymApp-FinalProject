@@ -1,0 +1,35 @@
+﻿@model GYM4UApp.Models.MembershipCardView
+
+@{
+    ViewBag.Title = "DetailsMS";
+}
+
+<h2>Membership Card INFO:</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CardNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CardNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Expired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Expired)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Create new card", "CreateMC", new { id = Model.Id }) |
+    @Html.ActionLink("Membership type", "GoToType", new { id = Model.MembershipTypeId})|
+    @Html.ActionLink("See all members", "BackToList")
+</p>

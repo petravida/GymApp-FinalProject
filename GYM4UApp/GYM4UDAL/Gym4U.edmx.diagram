@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="29be91e9cecf4a53aa69bc12212887a1" Name="Diagram1">
+        <EntityTypeShape EntityType="Gym4UModel.Activity" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gym4UModel.ActivityMembershipCard" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gym4UModel.AppUser" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gym4UModel.Member" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gym4UModel.MembershipType" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gym4UModel.Role" Width="1.5" PointX="0.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gym4UModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gym4UModel.MembershipCard" Width="1.5" PointX="7.5" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="Gym4UModel.FK__ActivityM__Activ__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_Activity_CreatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_Activity_UpdatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK__ActivityM__Membe__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_ActivityMembershipCard_CreatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_ActivityMembershipCard_UpdatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK__AppUser__RoleId__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK__Member__AppUserI__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_AppUser_CreatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_AppUser_UpdatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_Member_CreatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_Member_UpdatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_MembershipCard_CreatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_MembershipCard_UpdatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_MembershipType_CreatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_MembershipType_UpdatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_Role_CreatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK_Role_UpdatedByUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK__MembershipCa__Id__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym4UModel.FK__Membershi__Membe__412EB0B6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

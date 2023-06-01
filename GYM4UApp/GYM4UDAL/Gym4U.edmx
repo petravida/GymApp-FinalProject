@@ -1,0 +1,1119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Gym4UModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivityMembershipCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ActivityId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MembershipCardId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sex" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="OIB" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sex" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+          <Property Name="OIB" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="AppUserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Gym4U.dbo.MembershipCard' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MembershipCard">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CardNumber" />
+            <PropertyRef Name="Expired" />
+            <PropertyRef Name="DateCreated" />
+            <PropertyRef Name="DateUpdated" />
+            <PropertyRef Name="CreatedByUserId" />
+            <PropertyRef Name="UpdatedByUserId" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="MembershipTypeId" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CardNumber" Type="int" Nullable="false" />
+          <Property Name="Expired" Type="datetime" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="MembershipTypeId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MembershipType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NumberOfActivities" Type="int" Nullable="false" />
+          <Property Name="TimeLimit" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__ActivityM__Activ__45F365D3">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+          <End Role="ActivityMembershipCard" Type="Self.ActivityMembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityMembershipCard">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ActivityM__Membe__46E78A0C">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="ActivityMembershipCard" Type="Self.ActivityMembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityMembershipCard">
+              <PropertyRef Name="MembershipCardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AppUser__RoleId__398D8EEE">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AppUser">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Member__AppUserI__3E52440B">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="AppUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Membershi__Membe__412EB0B6">
+          <End Role="MembershipType" Type="Self.MembershipType" Multiplicity="1" />
+          <End Role="MembershipCard" Type="Self.MembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MembershipType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipCard">
+              <PropertyRef Name="MembershipTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MembershipCa__Id__403A8C7D">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="MembershipCard" Type="Self.MembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipCard">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityMembershipCard_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="ActivityMembershipCard" Type="Self.ActivityMembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityMembershipCard">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityMembershipCard_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="ActivityMembershipCard" Type="Self.ActivityMembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityMembershipCard">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUser_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="AppUser1" Type="Self.AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AppUser1">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUser_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="AppUser1" Type="Self.AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AppUser1">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipCard_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="MembershipCard" Type="Self.MembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipCard">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipCard_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="MembershipCard" Type="Self.MembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipCard">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipType_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="MembershipType" Type="Self.MembershipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipType">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipType_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="MembershipType" Type="Self.MembershipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipType">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Gym4UModelStoreContainer">
+          <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityMembershipCard" EntityType="Self.ActivityMembershipCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppUser" EntityType="Self.AppUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MembershipType" EntityType="Self.MembershipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MembershipCard" EntityType="Self.MembershipCard" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MembershipCard].[Id] AS [Id], 
+    [MembershipCard].[CardNumber] AS [CardNumber], 
+    [MembershipCard].[Expired] AS [Expired], 
+    [MembershipCard].[DateCreated] AS [DateCreated], 
+    [MembershipCard].[DateUpdated] AS [DateUpdated], 
+    [MembershipCard].[CreatedByUserId] AS [CreatedByUserId], 
+    [MembershipCard].[UpdatedByUserId] AS [UpdatedByUserId], 
+    [MembershipCard].[IsActive] AS [IsActive], 
+    [MembershipCard].[MembershipTypeId] AS [MembershipTypeId]
+    FROM [dbo].[MembershipCard] AS [MembershipCard]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__ActivityM__Activ__45F365D3" Association="Self.FK__ActivityM__Activ__45F365D3">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="ActivityMembershipCard" EntitySet="ActivityMembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ActivityM__Membe__46E78A0C" Association="Self.FK__ActivityM__Membe__46E78A0C">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="ActivityMembershipCard" EntitySet="ActivityMembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AppUser__RoleId__398D8EEE" Association="Self.FK__AppUser__RoleId__398D8EEE">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="AppUser" EntitySet="AppUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Member__AppUserI__3E52440B" Association="Self.FK__Member__AppUserI__3E52440B">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Membershi__Membe__412EB0B6" Association="Self.FK__Membershi__Membe__412EB0B6">
+            <End Role="MembershipType" EntitySet="MembershipType" />
+            <End Role="MembershipCard" EntitySet="MembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MembershipCa__Id__403A8C7D" Association="Self.FK__MembershipCa__Id__403A8C7D">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="MembershipCard" EntitySet="MembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_CreatedByUserId" Association="Self.FK_Activity_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_UpdatedByUserId" Association="Self.FK_Activity_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityMembershipCard_CreatedByUserId" Association="Self.FK_ActivityMembershipCard_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="ActivityMembershipCard" EntitySet="ActivityMembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityMembershipCard_UpdatedByUserId" Association="Self.FK_ActivityMembershipCard_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="ActivityMembershipCard" EntitySet="ActivityMembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUser_CreatedByUserId" Association="Self.FK_AppUser_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="AppUser1" EntitySet="AppUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUser_UpdatedByUserId" Association="Self.FK_AppUser_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="AppUser1" EntitySet="AppUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_CreatedByUserId" Association="Self.FK_Member_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_UpdatedByUserId" Association="Self.FK_Member_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipCard_CreatedByUserId" Association="Self.FK_MembershipCard_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="MembershipCard" EntitySet="MembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipCard_UpdatedByUserId" Association="Self.FK_MembershipCard_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="MembershipCard" EntitySet="MembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipType_CreatedByUserId" Association="Self.FK_MembershipType_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="MembershipType" EntitySet="MembershipType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipType_UpdatedByUserId" Association="Self.FK_MembershipType_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="MembershipType" EntitySet="MembershipType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_CreatedByUserId" Association="Self.FK_Role_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_UpdatedByUserId" Association="Self.FK_Role_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Gym4UModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ActivityMembershipCard" Relationship="Self.FK__ActivityM__Activ__45F365D3" FromRole="Activity" ToRole="ActivityMembershipCard" />
+          <NavigationProperty Name="AppUser" Relationship="Self.FK_Activity_CreatedByUserId" FromRole="Activity" ToRole="AppUser" />
+          <NavigationProperty Name="AppUser1" Relationship="Self.FK_Activity_UpdatedByUserId" FromRole="Activity" ToRole="AppUser" />
+        </EntityType>
+        <EntityType Name="ActivityMembershipCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ActivityId" Type="Guid" Nullable="false" />
+          <Property Name="MembershipCardId" Type="Guid" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK__ActivityM__Activ__45F365D3" FromRole="ActivityMembershipCard" ToRole="Activity" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__ActivityM__Membe__46E78A0C" FromRole="ActivityMembershipCard" ToRole="Member" />
+          <NavigationProperty Name="AppUser" Relationship="Self.FK_ActivityMembershipCard_CreatedByUserId" FromRole="ActivityMembershipCard" ToRole="AppUser" />
+          <NavigationProperty Name="AppUser1" Relationship="Self.FK_ActivityMembershipCard_UpdatedByUserId" FromRole="ActivityMembershipCard" ToRole="AppUser" />
+        </EntityType>
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="OIB" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_CreatedByUserId" FromRole="AppUser" ToRole="Activity" />
+          <NavigationProperty Name="Activity1" Relationship="Self.FK_Activity_UpdatedByUserId" FromRole="AppUser" ToRole="Activity" />
+          <NavigationProperty Name="ActivityMembershipCard" Relationship="Self.FK_ActivityMembershipCard_CreatedByUserId" FromRole="AppUser" ToRole="ActivityMembershipCard" />
+          <NavigationProperty Name="ActivityMembershipCard1" Relationship="Self.FK_ActivityMembershipCard_UpdatedByUserId" FromRole="AppUser" ToRole="ActivityMembershipCard" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__AppUser__RoleId__398D8EEE" FromRole="AppUser" ToRole="Role" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__Member__AppUserI__3E52440B" FromRole="AppUser" ToRole="Member" />
+          <NavigationProperty Name="AppUser1" Relationship="Self.FK_AppUser_CreatedByUserId" FromRole="AppUser" ToRole="AppUser1" />
+          <NavigationProperty Name="AppUser2" Relationship="Self.FK_AppUser_CreatedByUserId" FromRole="AppUser1" ToRole="AppUser" />
+          <NavigationProperty Name="AppUser11" Relationship="Self.FK_AppUser_UpdatedByUserId" FromRole="AppUser" ToRole="AppUser1" />
+          <NavigationProperty Name="AppUser3" Relationship="Self.FK_AppUser_UpdatedByUserId" FromRole="AppUser1" ToRole="AppUser" />
+          <NavigationProperty Name="Member1" Relationship="Self.FK_Member_CreatedByUserId" FromRole="AppUser" ToRole="Member" />
+          <NavigationProperty Name="Member2" Relationship="Self.FK_Member_UpdatedByUserId" FromRole="AppUser" ToRole="Member" />
+          <NavigationProperty Name="MembershipCard" Relationship="Self.FK_MembershipCard_CreatedByUserId" FromRole="AppUser" ToRole="MembershipCard" />
+          <NavigationProperty Name="MembershipCard1" Relationship="Self.FK_MembershipCard_UpdatedByUserId" FromRole="AppUser" ToRole="MembershipCard" />
+          <NavigationProperty Name="MembershipType" Relationship="Self.FK_MembershipType_CreatedByUserId" FromRole="AppUser" ToRole="MembershipType" />
+          <NavigationProperty Name="MembershipType1" Relationship="Self.FK_MembershipType_UpdatedByUserId" FromRole="AppUser" ToRole="MembershipType" />
+          <NavigationProperty Name="Role1" Relationship="Self.FK_Role_CreatedByUserId" FromRole="AppUser" ToRole="Role" />
+          <NavigationProperty Name="Role2" Relationship="Self.FK_Role_UpdatedByUserId" FromRole="AppUser" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OIB" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="AppUserId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ActivityMembershipCard" Relationship="Self.FK__ActivityM__Membe__46E78A0C" FromRole="Member" ToRole="ActivityMembershipCard" />
+          <NavigationProperty Name="AppUser" Relationship="Self.FK__Member__AppUserI__3E52440B" FromRole="Member" ToRole="AppUser" />
+          <NavigationProperty Name="AppUser1" Relationship="Self.FK_Member_CreatedByUserId" FromRole="Member" ToRole="AppUser" />
+          <NavigationProperty Name="AppUser2" Relationship="Self.FK_Member_UpdatedByUserId" FromRole="Member" ToRole="AppUser" />
+          <NavigationProperty Name="MembershipCard" Relationship="Self.FK__MembershipCa__Id__403A8C7D" FromRole="Member" ToRole="MembershipCard" />
+        </EntityType>
+        <EntityType Name="MembershipType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NumberOfActivities" Type="Int32" Nullable="false" />
+          <Property Name="TimeLimit" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AppUser" Relationship="Self.FK_MembershipType_CreatedByUserId" FromRole="MembershipType" ToRole="AppUser" />
+          <NavigationProperty Name="AppUser1" Relationship="Self.FK_MembershipType_UpdatedByUserId" FromRole="MembershipType" ToRole="AppUser" />
+          <NavigationProperty Name="MembershipCard" Relationship="Self.FK__Membershi__Membe__412EB0B6" FromRole="MembershipType" ToRole="MembershipCard" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AppUser" Relationship="Self.FK__AppUser__RoleId__398D8EEE" FromRole="Role" ToRole="AppUser" />
+          <NavigationProperty Name="AppUser1" Relationship="Self.FK_Role_CreatedByUserId" FromRole="Role" ToRole="AppUser" />
+          <NavigationProperty Name="AppUser2" Relationship="Self.FK_Role_UpdatedByUserId" FromRole="Role" ToRole="AppUser" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="MembershipCard">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CardNumber" />
+            <PropertyRef Name="Expired" />
+            <PropertyRef Name="DateCreated" />
+            <PropertyRef Name="DateUpdated" />
+            <PropertyRef Name="CreatedByUserId" />
+            <PropertyRef Name="UpdatedByUserId" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="MembershipTypeId" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CardNumber" Type="Int32" Nullable="false" />
+          <Property Name="Expired" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="MembershipTypeId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="AppUser" Relationship="Self.FK_MembershipCard_CreatedByUserId" FromRole="MembershipCard" ToRole="AppUser" />
+          <NavigationProperty Name="AppUser1" Relationship="Self.FK_MembershipCard_UpdatedByUserId" FromRole="MembershipCard" ToRole="AppUser" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__MembershipCa__Id__403A8C7D" FromRole="MembershipCard" ToRole="Member" />
+          <NavigationProperty Name="MembershipType" Relationship="Self.FK__Membershi__Membe__412EB0B6" FromRole="MembershipCard" ToRole="MembershipType" />
+        </EntityType>
+        <Association Name="FK__ActivityM__Activ__45F365D3">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+          <End Role="ActivityMembershipCard" Type="Self.ActivityMembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityMembershipCard">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ActivityM__Membe__46E78A0C">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="ActivityMembershipCard" Type="Self.ActivityMembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityMembershipCard">
+              <PropertyRef Name="MembershipCardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityMembershipCard_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="ActivityMembershipCard" Type="Self.ActivityMembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityMembershipCard">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityMembershipCard_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="ActivityMembershipCard" Type="Self.ActivityMembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityMembershipCard">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AppUser__RoleId__398D8EEE">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AppUser">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Member__AppUserI__3E52440B">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="AppUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUser_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="AppUser1" Type="Self.AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AppUser1">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUser_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="AppUser1" Type="Self.AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AppUser1">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipCard_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="MembershipCard" Type="Self.MembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipCard">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipCard_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="MembershipCard" Type="Self.MembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipCard">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipType_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="MembershipType" Type="Self.MembershipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipType">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipType_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="MembershipType" Type="Self.MembershipType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipType">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_CreatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="CreatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_UpdatedByUserId">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="UpdatedByUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MembershipCa__Id__403A8C7D">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="MembershipCard" Type="Self.MembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipCard">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Membershi__Membe__412EB0B6">
+          <End Role="MembershipType" Type="Self.MembershipType" Multiplicity="1" />
+          <End Role="MembershipCard" Type="Self.MembershipCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MembershipType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembershipCard">
+              <PropertyRef Name="MembershipTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Gym4UEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activity" EntityType="Self.Activity" />
+          <EntitySet Name="ActivityMembershipCard" EntityType="Self.ActivityMembershipCard" />
+          <EntitySet Name="AppUser" EntityType="Self.AppUser" />
+          <EntitySet Name="Member" EntityType="Self.Member" />
+          <EntitySet Name="MembershipType" EntityType="Self.MembershipType" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="MembershipCard" EntityType="Self.MembershipCard" />
+          <AssociationSet Name="FK__ActivityM__Activ__45F365D3" Association="Self.FK__ActivityM__Activ__45F365D3">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="ActivityMembershipCard" EntitySet="ActivityMembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_CreatedByUserId" Association="Self.FK_Activity_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_UpdatedByUserId" Association="Self.FK_Activity_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ActivityM__Membe__46E78A0C" Association="Self.FK__ActivityM__Membe__46E78A0C">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="ActivityMembershipCard" EntitySet="ActivityMembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityMembershipCard_CreatedByUserId" Association="Self.FK_ActivityMembershipCard_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="ActivityMembershipCard" EntitySet="ActivityMembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityMembershipCard_UpdatedByUserId" Association="Self.FK_ActivityMembershipCard_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="ActivityMembershipCard" EntitySet="ActivityMembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AppUser__RoleId__398D8EEE" Association="Self.FK__AppUser__RoleId__398D8EEE">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="AppUser" EntitySet="AppUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Member__AppUserI__3E52440B" Association="Self.FK__Member__AppUserI__3E52440B">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUser_CreatedByUserId" Association="Self.FK_AppUser_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="AppUser1" EntitySet="AppUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUser_UpdatedByUserId" Association="Self.FK_AppUser_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="AppUser1" EntitySet="AppUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_CreatedByUserId" Association="Self.FK_Member_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_UpdatedByUserId" Association="Self.FK_Member_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipCard_CreatedByUserId" Association="Self.FK_MembershipCard_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="MembershipCard" EntitySet="MembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipCard_UpdatedByUserId" Association="Self.FK_MembershipCard_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="MembershipCard" EntitySet="MembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipType_CreatedByUserId" Association="Self.FK_MembershipType_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="MembershipType" EntitySet="MembershipType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipType_UpdatedByUserId" Association="Self.FK_MembershipType_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="MembershipType" EntitySet="MembershipType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_CreatedByUserId" Association="Self.FK_Role_CreatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_UpdatedByUserId" Association="Self.FK_Role_UpdatedByUserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MembershipCa__Id__403A8C7D" Association="Self.FK__MembershipCa__Id__403A8C7D">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="MembershipCard" EntitySet="MembershipCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Membershi__Membe__412EB0B6" Association="Self.FK__Membershi__Membe__412EB0B6">
+            <End Role="MembershipType" EntitySet="MembershipType" />
+            <End Role="MembershipCard" EntitySet="MembershipCard" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Gym4UModelStoreContainer" CdmEntityContainer="Gym4UEntities">
+          <EntitySetMapping Name="Activity">
+            <EntityTypeMapping TypeName="Gym4UModel.Activity">
+              <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityMembershipCard">
+            <EntityTypeMapping TypeName="Gym4UModel.ActivityMembershipCard">
+              <MappingFragment StoreEntitySet="ActivityMembershipCard">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="MembershipCardId" ColumnName="MembershipCardId" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppUser">
+            <EntityTypeMapping TypeName="Gym4UModel.AppUser">
+              <MappingFragment StoreEntitySet="AppUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Member">
+            <EntityTypeMapping TypeName="Gym4UModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AppUserId" ColumnName="AppUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MembershipType">
+            <EntityTypeMapping TypeName="Gym4UModel.MembershipType">
+              <MappingFragment StoreEntitySet="MembershipType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="NumberOfActivities" ColumnName="NumberOfActivities" />
+                <ScalarProperty Name="TimeLimit" ColumnName="TimeLimit" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="Gym4UModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Gym4UModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MembershipCard">
+            <EntityTypeMapping TypeName="Gym4UModel.MembershipCard">
+              <MappingFragment StoreEntitySet="MembershipCard">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="Expired" ColumnName="Expired" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="MembershipTypeId" ColumnName="MembershipTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

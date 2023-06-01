@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GYM4UApp.Models.MembershipCardView>
+
+@{
+    ViewBag.Title = "GetAllMembershipCard";
+}
+
+<h2>GetAllMembershipCard</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateMC")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CardNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Expired)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CardNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Expired)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MembershipTypeId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "DetailsMS", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
